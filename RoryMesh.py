@@ -1,4 +1,3 @@
-
 import random
 import time
 
@@ -10,6 +9,4 @@ for i in range(rows):
     for j in range(columns):
         row.append(0);
     mesh.append(row)
-print(mesh)
-mesh[0][2] = 5
 print(mesh)
