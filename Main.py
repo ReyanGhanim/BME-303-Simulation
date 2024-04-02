@@ -1,2 +1,4 @@
-print("Hello")
-print("Sahir is a cool guy!")
+size = 40
+
+
+print(size)
