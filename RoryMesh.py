@@ -58,13 +58,13 @@ for i in range(iter):
                 if mesh[x-1][y].state == 0: #Infects Cell above
                     if mesh[x][y].runPerc(mesh[x][y].infectRate):
                         mesh[x-1][y].state = 1
-                if (x == rows-2) and mesh[x+1][y].state == 0: #Infects Cell Below
+                if (x <= rows-2) and mesh[x+1][y].state == 0: #Infects Cell Below
                     if mesh[x][y].runPerc(mesh[x][y].infectRate):
                         mesh[x+1][y].state = 1
                 if mesh[x][y-1].state == 0: #Infects Cell to Left
                     if mesh[x][y].runPerc(mesh[x][y].infectRate):
                         mesh[x][y-1].state = 1
-                if (y == rows-2) and mesh[x][y+1].state == 0: #Infects Cell to right
+                if (y <= rows-2) and mesh[x][y+1].state == 0: #Infects Cell to right
                     if mesh[x][y].runPerc(mesh[x][y].infectRate):
                         mesh[x][y+1].state = 1
 
