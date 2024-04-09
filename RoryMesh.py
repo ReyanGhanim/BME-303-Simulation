@@ -12,8 +12,6 @@ class Patient:
         else:
             return False
 
-
-
 import random
 
 #Creates a population with the set parameters of size-------------------------------------------------------------------

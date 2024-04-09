@@ -10,10 +10,22 @@ random.seed(time.time())
 #1 = immune cell
 #2 = cancer cell
 
+#Creates a population with the set parameters of size-------------------------------------------------------------------
+rows = 5
+columns = 5
+population = rows * columns
+
 mesh = []
 for i in range(rows):
     row = []
     for j in range(columns):
-        row.append(random.randint(0, 2))
+        row.append(0)
     mesh.append(row)
-print(mesh)
+
+mesh[3][-1] = 1
+
+for x in range(rows):
+    for y in range(columns):
+        print(mesh[x][y], end="")
+    print("")
+print("")
