@@ -1,4 +1,4 @@
-# Sahir's mesh code
+# Sahir's wack ass mesh code
 
 import random
 import time
