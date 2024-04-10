@@ -86,6 +86,7 @@ def simulate(iteration=0):
     else:
         data_file.close()
 
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("Disease Spread Simulation")

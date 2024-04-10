@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
     data_file = open('simulation_data.csv', 'w', newline='')
     data_writer = csv.writer(data_file)
-    data_writer.writerow(['Iteration', 'Healthy', 'Infected', 'Vaccinated'])
+    #data_writer.writerow(['Iteration', 'Healthy', 'Infected', 'Vaccinated'])
 
     # Write initial state (iteration 0) to CSV file
     initial_counts = count_states()
