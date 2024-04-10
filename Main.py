@@ -6,7 +6,7 @@ class Patient:
     def __init__(self):
         self.state = 0  # State 0 is healthy, state 1 is sick, state 2 is vaccinated
         self.healRate = 0
-        self.infectRate = 0.5
+        self.infectRate = 0.2
         self.vacRate = 0.05
 
     def runPerc(self, rate):
@@ -79,6 +79,7 @@ def simulate(iteration=0):
                         patient.infectRate -= 0.05
 
         update_grid()
+        #opens file, send grid to file, closes file
         counts = count_states()
         data_writer.writerow([iteration, counts[0], counts[1], counts[2]])
         root.after(100, simulate, iteration + 1)
@@ -89,8 +90,8 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.title("Disease Spread Simulation")
 
-    rows, columns = 30, 30
-    cell_size = 20
+    rows, columns = 50, 50
+    cell_size = 15
     mesh = [[Patient() for _ in range(columns)] for _ in range(rows)]
     cells = [[tk.Frame(root, bg="white", width=cell_size, height=cell_size) for _ in range(columns)] for _ in range(rows)]
 
