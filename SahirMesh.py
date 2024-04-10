@@ -2,34 +2,6 @@ import tkinter as tk
 import random
 import csv
 
-<<<<<<< HEAD
-rows = 5
-columns = 5
-random.seed(time.time())
-#0 = healthy cell
-#1 = immune cell
-#2 = cancer cell
-
-#Creates a population with the set parameters of size-------------------------------------------------------------------
-rows = 5
-columns = 5
-population = rows * columns
-
-mesh = []
-for i in range(rows):
-    row = []
-    for j in range(columns):
-        row.append(0)
-    mesh.append(row)
-
-mesh[3][-1] = 1
-
-for x in range(rows):
-    for y in range(columns):
-        print(mesh[x][y], end="")
-    print("")
-print("")
-=======
 class Patient:
     def __init__(self):
         self.state = 0  # State 0 is healthy, state 1 is sick, state 2 is vaccinated
@@ -137,7 +109,7 @@ if __name__ == "__main__":
 
     data_file = open('simulation_data.csv', 'w', newline='')
     data_writer = csv.writer(data_file)
-    data_writer.writerow(['Iteration', 'Healthy', 'Infected', 'Vaccinated'])
+    #data_writer.writerow(['Iteration', 'Healthy', 'Infected', 'Vaccinated'])
 
     # Write initial state (iteration 0) to CSV file
     initial_counts = count_states()
@@ -146,4 +118,3 @@ if __name__ == "__main__":
     simulate()  # Start the animation
 
     root.mainloop()
->>>>>>> 125243230a6a94b80b02a37126fcf472fea771c3
