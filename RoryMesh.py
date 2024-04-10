@@ -1,8 +1,8 @@
 class Patient:
     def __init__(self):
-        self.state = 0
+        self.state = 0 #State 0 is healthy, state 1 is sick, state 2 is vaccinated
         self.healRate = 0
-        self.infectRate = 0.25
+        self.infectRate = 0.5
         self.vacRate = 0.05
 
     def runPerc(self, rate):
@@ -11,6 +11,8 @@ class Patient:
             return True
         else:
             return False
+
+
 
 import random
 
@@ -55,22 +57,18 @@ for i in range(iter):
                         mesh[x][y].infectRate = 0
 
             elif mesh[x][y].state == 1:
-                if x != 0:  #If x is not the first row
-                    if mesh[x-1][y].state == 0: #Infects Cell above
-                        if mesh[x][y].runPerc(mesh[x][y].infectRate):
-                            mesh[x-1][y].state = 1
-                if x != rows-1: #If x is not the last row
-                    if mesh[x+1][y].state == 0: #Infects Cell Below
-                        if mesh[x][y].runPerc(mesh[x][y].infectRate):
-                            mesh[x+1][y].state = 1
-                if y != 0:      #If y is not the first column
-                    if mesh[x][y-1].state == 0: #Infects Cell to Left
-                        if mesh[x][y].runPerc(mesh[x][y].infectRate):
-                            mesh[x][y-1].state = 1
-                if y != columns-1:  #If y is not the last column
-                    if mesh[x][y+1].state == 0: #Infects Cell to right
-                        if mesh[x][y].runPerc(mesh[x][y].infectRate):
-                            mesh[x][y+1].state = 1
+                if (x != 0) and mesh[x-1][y].state == 0: #Infects Cell above
+                    if mesh[x][y].runPerc(mesh[x][y].infectRate):
+                        mesh[x-1][y].state = 1
+                if (x < rows-1) and mesh[x+1][y].state == 0: #Infects Cell Below
+                    if mesh[x][y].runPerc(mesh[x][y].infectRate):
+                        mesh[x+1][y].state = 1
+                if (y != 0) and mesh[x][y-1].state == 0: #Infects Cell to Left
+                    if mesh[x][y].runPerc(mesh[x][y].infectRate):
+                        mesh[x][y-1].state = 1
+                if (y < rows-1) and mesh[x][y+1].state == 0: #Infects Cell to right
+                    if mesh[x][y].runPerc(mesh[x][y].infectRate):
+                        mesh[x][y+1].state = 1
 
                 if mesh[x][y].runPerc(mesh[x][y].healRate): #Gives the cell a chance to heal
                     mesh[x][y].state = 0
