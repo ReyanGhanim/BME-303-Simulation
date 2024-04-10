@@ -15,12 +15,21 @@ class Patient:
         else:
             return False
 
-def get_color(state):
-    if state == 0:
+def get_color(Patient):
+    if Patient.state == 0:
         return "white"
-    elif state == 1:
-        return "red"
-    elif state == 2:
+    elif Patient.state == 1:
+        if Patient.healRate == 0:
+            return "darkred"
+        elif Patient.healRate == 0.1:
+            return "firebrick"
+        elif Patient.healRate == 0.2:
+            return "red"
+        elif Patient.healRate == 0.3:
+            return "indianred"
+        else:
+            return "lightcoral"
+    elif Patient.state == 2:
         return "green"
     else:
         return "black"
@@ -28,7 +37,7 @@ def get_color(state):
 def update_grid():
     for x in range(rows):
         for y in range(columns):
-            cells[x][y].configure(bg=get_color(mesh[x][y].state))
+            cells[x][y].configure(bg=get_color(mesh[x][y]))
 
 def count_states():
     counts = {0: 0, 1: 0, 2: 0}
@@ -66,7 +75,7 @@ def simulate(iteration=0):
                         patient.healRate = 0
                         patient.infectRate = 0.3
                     else:
-                        patient.healRate += 0.05
+                        patient.healRate += 0.1
                         patient.infectRate -= 0.05
 
         update_grid()
