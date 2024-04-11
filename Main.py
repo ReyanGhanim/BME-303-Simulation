@@ -2,6 +2,8 @@ import tkinter as tk
 import random
 import csv
 import matplotlib.pyplot as plt
+import os
+from PIL import Image
 
 class Patient:
     def __init__(self):
@@ -80,15 +82,35 @@ def simulate(iteration=0):
                         patient.infectRate -= 0.05
 
         update_grid()
-        #opens file, send grid to file, closes file
         counts = count_states()
         data_writer.writerow([iteration, counts[0], counts[1], counts[2]])
+
+        # Create an image of the grid
+        img = Image.new('RGB', (columns, rows))
+        pixels = img.load()
+        for x in range(rows):
+            for y in range(columns):
+                color = get_color(mesh[x][y])
+                pixels[y, x] = {
+                    "white": (255, 255, 255),
+                    "darkred": (139, 0, 0),
+                    "firebrick": (178, 34, 34),
+                    "red": (255, 0, 0),
+                    "indianred": (205, 92, 92),
+                    "lightcoral": (240, 128, 128),
+                    "green": (0, 128, 0),
+                    "black": (0, 0, 0)
+                }[color]
+
+        # Save the image
+        img.save(f'grids/grid_{iteration}.png')
         root.after(100, simulate, iteration + 1)
     else:
         data_file.close()
 
 
 if __name__ == "__main__":
+    os.makedirs('grids', exist_ok=True)
     root = tk.Tk()
     root.title("Disease Spread Simulation")
 
