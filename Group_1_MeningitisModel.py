@@ -9,11 +9,13 @@ from PIL import Image
 class Patient:
     def __init__(self):
         self.state = 0  #State 0 is healthy, state 1 is sick, state 2 is vaccinated
-        self.healRate = 0   #Patients start with a default healRate of 0 (because they start as healthy)
-        self.infectRate = 0.2   #Patients start with a default infectRate of 0.2 that will become useful once the patient is sick
-        self.vacRate = 0.05     #Patients start with a vaccination rate of 0.05, which comes into effect halfway through the simulation
+        self.healRate = 0   #Default healRate of 0
+        self.infectRate = 0.05   #Default infectRate of 5%
+        self.vacRate = 0.015     #Default vaccination rate of 1.5%
+                                #Vaccination comes into effect halfway through the simulation
 
-    #The runPerc (run percentage) function returns true or false when given a rate by using random.random() to generate a number between zero and one and comparing this to the given rate
+    #The runPerc (run percentage) function returns true or false when given a rate
+    #Uses random.random() to generate a number between zero and one
     def runPerc(self, rate):
         if random.random() < rate:
             return True
@@ -85,7 +87,7 @@ def simulate(iteration=0):
                     if patient.runPerc(patient.healRate):
                         patient.state = 0
                         patient.healRate = 0
-                        patient.infectRate = 0.3
+                        patient.infectRate = 0.15
                     # If the patient doesn't become healthy, their chances to become healthy increase and their chances to infect others decreases
                     else:
                         patient.healRate += 0.1
