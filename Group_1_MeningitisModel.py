@@ -182,7 +182,7 @@ if __name__ == "__main__":
     plt.plot(healthy, label='Healthy')
     plt.plot(infected, label='Infected')
     plt.plot(vaccinated, label='Vaccinated')
-    plt.xlabel('Time (weeks)')
+    plt.xlabel('Iterations (3 days)')
     plt.ylabel('Number of Individuals')
     plt.title('Meningitis Curve')
     plt.legend(loc='upper right')
